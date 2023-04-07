@@ -1,0 +1,26 @@
+:root {
+  --main-color: lawngreen;
+  --secondary-color: yellow;
+  --font-main-color: #252525;
+}
+
+h1 {
+  color: var(--font-main-color);
+}
+
+.flex {
+  display: flex;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+input[type="checkbox"]:checked + p {
+  text-decoration: line-through;
+}
+
+button {
+  height: 25px;
+  width: auto;
+}
