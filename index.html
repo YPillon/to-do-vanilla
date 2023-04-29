@@ -2,23 +2,26 @@
 <html>
 
 <head>
-    <title>To-do List</title>
+    <title>My To-do List</title>
     <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
-    <h1>Bienvenue sur votre To-do List</h1>
-    <main class="flex">
-        <div>
-            <button id="addButton">Ajouter une ligne</button>
-            <button id="deleteButton">Supprimer la dernière ligne</button>
-        </div>
-        <div id="todoContainer"></div>
-        <div>
-            <input id="inputField" type="text" placeholder="Écrivez du texte..." autofocus>
-        </div>
-    </main>
-    <script src="index.js"></script>
+    <div class="wrapper">
+        <h1>Bienvenue sur My To-do List</h1>
+        <main class="flex">
+            <div class="mx flex column">
+                <label for="inputField" class="lgText outlineText">Ajouter une tâche</label>
+                <input id="inputField" type="text" placeholder="Écrivez du texte..." autofocus>
+            </div>
+            <div id="todoContainer" class="mx"></div>
+            <div class="flex column mx">
+                <button id="addButton" class="marginBottom">Ajouter une tâche</button>
+                <button id="deleteButton">Supprimer la dernière tâche</button>
+            </div>
+        </main>
+    </div>
+    <script type="module" src="index.js"></script>
 </body>
 
 </html>
