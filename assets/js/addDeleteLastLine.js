@@ -1,34 +1,38 @@
-import { storeTodo } from "./storeTodo.js";
-
 /**
  * Supprime la dernière ligne de la to-do
- * 
- * @returns 
+ *
+ * @returns
  */
-function deleteLastLine() {
+export function deleteLastLine(node) {
   // Vérifie si il y au moins une ligne dans la to-do
-  if (todoContainer.hasChildNodes() === true) {
+  if (node.hasChildNodes() === true) {
     // Supprime la dernière ligne
-    todoContainer.lastChild.remove();
-    // Met à jour la to-do dans le localStorage
-    storeTodo();
-    return;
+    node.lastChild.remove();
+    return true;
   }
-  // Sinon ne fait rien
+  // Sinon renvoie une erreur
   else {
-    return;
+    return new Error("Aucune ligne à supprimer");
   }
 }
 
 /**
  * Ajoute la fonction de suppression de la dernière ligne au bouton correspondant
- * 
- * @returns 
+ *
+ * @return true
  */
-// 
+//
 export function addDeleteLastLine() {
-  document
-    .getElementById("deleteButton")
-    .addEventListener("click", deleteLastLine);
-  return;
+  try {
+    function deleteLastLineFromTodoContainer() {
+      return deleteLastLine(document.getElementById("todoContainer"));
+    }
+
+    document
+      .getElementById("deleteButton")
+      .addEventListener("click", deleteLastLineFromTodoContainer);
+    return true;
+  } catch (error) {
+    return error;
+  }
 }

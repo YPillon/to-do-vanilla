@@ -3,7 +3,7 @@
  *
  * @param {string} pressedKey
  * @param {HTMLElement} element
- * @param {Function} functionTriggered
+ * @param {function} functionTriggered
  */
 export function addKeypressEventListener(
   pressedKey,
@@ -11,17 +11,22 @@ export function addKeypressEventListener(
   functionTriggered
 ) {
   element.addEventListener("keypress", function (event) {
-    if (event.key === pressedKey) {
-      functionTriggered();
-      // Vérifie bien dans ce cas que "element" est le champ de saisie de texte
+    try {
       if (
+        event.key === pressedKey &&
+        // Vérifie bien dans ce cas que "element" est le champ de saisie de texte et qu'il n'est pas vide
         element.tagName.toLowerCase() === "input" &&
-        element.type.toLowerCase() === "text"
+        element.type.toLowerCase() === "text" &&
+        element.value !== ""
       ) {
+        functionTriggered();
         element.value = "";
+        return true;
+      } else {
+        throw new Error("Il y a un problème");
       }
-    } else {
-      return;
+    } catch (error) {
+      return error;
     }
   });
 }
