@@ -1,6 +1,6 @@
 /**
  * Initialise un observer qui va surveiller les changement du DOM à sur et à l'intérieur d'un Noeud entré en paramètre.
- * A chaque changement, la finction passée en paramètre est appelée.
+ * A chaque changement, la fonction passée en paramètre est appelée.
  *
  * @param {HTMLElement} targetNode
  * @param {Function} callback
